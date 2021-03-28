@@ -11,31 +11,60 @@ public class Main : MonoBehaviour
     public float enemySpawnPerSecond = 0.5f; // # Enemies/second
     public float enemyDefaultPadding = 1.5f; // Padding for position
     public WeaponDefinition[] weaponDefinitions;
+    public GameObject prefabPowerUp;
+    public WeaponType[] powerUpFrequency = new WeaponType[] {
+    WeaponType.blaster, WeaponType.blaster,
+    WeaponType.spread, WeaponType.shield };
     private BoundsCheck bndCheck;
     static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
+
+    public void shipDestroyed(Enemy_0 e)
+    {
+        // Potentially generate a PowerUp
+        if (Random.value <= e.powerUpDropChance)
+        {
+            // Pick one from the possibilities in powerUpFrequency
+            int ndx = Random.Range(0, powerUpFrequency.Length);
+            WeaponType puType = powerUpFrequency[ndx];
+
+            // Spawn a PowerUp
+            GameObject go = Instantiate(prefabPowerUp) as GameObject;
+            PowerUp pu = go.GetComponent<PowerUp>();
+
+            // Set it to the proper WeaponType
+            pu.SetType(puType);
+
+            // Set it to the position of the destroyed ship
+            pu.transform.position = e.transform.position;
+        }
+    }
+
     void Awake()
     {
         S = this;
         // Set bndCheck to reference the BoundsCheck component on this GameObject
         bndCheck = GetComponent<BoundsCheck>();
+
         // Invoke SpawnEnemy() once (in 2 seconds, based on default values)
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
+
         // A generic Dictionary with WeaponType as the key
-        WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>(); // a
+        WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>();
         foreach (WeaponDefinition def in weaponDefinitions)
-        { // b
+        {
             WEAP_DICT[def.type] = def;
         }
     }
     public void SpawnEnemy()
     {
         // Pick a random Enemy prefab to instantiate
-        int ndx = Random.Range(0, prefabEnemies.Length); // b
-        GameObject go = Instantiate<GameObject>(prefabEnemies[ndx]); // c
-                                                                     // Position the Enemy above the screen with a random x position
-        float enemyPadding = enemyDefaultPadding; // d
+        int ndx = Random.Range(0, prefabEnemies.Length);
+        GameObject go = Instantiate<GameObject>(prefabEnemies[ndx]);
+
+        // Position the Enemy above the screen with a random x position
+        float enemyPadding = enemyDefaultPadding;
         if (go.GetComponent<BoundsCheck>() != null)
-        { // e
+        {
             enemyPadding = Mathf.Abs(go.GetComponent<BoundsCheck>().radius);
         }
         // Set the initial position for the spawned Enemy // f
@@ -61,17 +90,14 @@ public class Main : MonoBehaviour
     }
 
     static public WeaponDefinition GetWeaponDefinition(WeaponType wt)
-    { // a
-      // Check to make sure that the key exists in the Dictionary
-      // Attempting to retrieve a key that didn't exist, would throw an error,
-      // so the following if statement is important.
+    {
+        // Check to make sure that the key exists in the Dictionary
         if (WEAP_DICT.ContainsKey(wt))
-        { // b
+        {
 
             return (WEAP_DICT[wt]);
         }
-        // This returns a new WeaponDefinition with a type of WeaponType.none,
-        // which means it has failed to find the right WeaponDefinition
+        // This returns a new WeaponDefinition
         return (new WeaponDefinition()
         );
     }

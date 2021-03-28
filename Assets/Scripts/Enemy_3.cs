@@ -7,16 +7,18 @@ public class Enemy_3 : Enemy_0
   // interpolation between more than two points.
     [Header("Set in Inspector: Enemy_3")]
     public float lifeTime = 5;
+
     [Header("Set Dynamically: Enemy_3")]
     public Vector3[] points;
     public float birthTime;
-    // Again, Start works well because it is not used by the Enemy superclass
+
+
     void Start()
     {
         points = new Vector3[3]; // Initialize points
-                                 // The start position has already been set by Main.SpawnEnemy()
         points[0] = pos;
-        // Set xMin and xMax the same way that Main.SpawnEnemy() does
+
+        // Set xMin and xMax 
         float xMin = -bndCheck.camWidth + bndCheck.radius;
         float xMax = bndCheck.camWidth - bndCheck.radius;
 
@@ -27,6 +29,7 @@ public class Enemy_3 : Enemy_0
         v.x = Random.Range(xMin, xMax);
         v.y = -bndCheck.camHeight * Random.Range(2.75f, 2);
         points[1] = v;
+
         // Pick a random final position above the top of the screen
         v = Vector3.zero;
         v.y = pos.y;

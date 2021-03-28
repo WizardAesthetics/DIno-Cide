@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Hero : MonoBehaviour
 {
-    static public Hero S; // Singleton // a
+    static public Hero S;
     [Header("Set in Inspector")]
     // These fields control the movement of the ship
     public float speed = 30;
@@ -12,6 +12,7 @@ public class Hero : MonoBehaviour
     public float gameRestartDelay = 2f;
     public GameObject projectilePrefab;
     public float projectileSpeed = 40;
+    public Weapon[] weapons;
 
 
     [Header("Set Dynamically")]
@@ -19,88 +20,127 @@ public class Hero : MonoBehaviour
     private float _shieldLevel = 1;
     private GameObject lastTriggerGo = null;
     // Declare a new delegate type WeaponFireDelegate
-    public delegate void WeaponFireDelegate(); 
+    public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
 
 
-    void Awake()
+    void Start()
     {
-        if (S == null)
-        {
-            S = this; // Set the Singleton // a
-        }
-        //fireDelegate += TempFire;
+        S = this;
+
+        ClearWeapons();
+        weapons[0].SetType(WeaponType.blaster);
     }
     void Update()
     {
         // Pull in information from the Input class
-        float xAxis = Input.GetAxis("Horizontal"); // b
-        float yAxis = Input.GetAxis("Vertical"); // b
-                                                 // Change transform.position based on the axes
+        float xAxis = Input.GetAxis("Horizontal");
+        float yAxis = Input.GetAxis("Vertical");
         Vector3 pos = transform.position;
         pos.x += xAxis * speed * Time.deltaTime;
         pos.y += yAxis * speed * Time.deltaTime;
         transform.position = pos;
-        // Rotate the ship to make it feel more dynamic // c
         transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0);
 
         transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0);
         // Allow the ship to fire
         if (Input.GetAxis("Jump") == 1 && fireDelegate != null)
-        { // d
-            fireDelegate(); // e
+        {
+            fireDelegate();
         }
-    }
-
-    void TempFire()
-    { // b
-        GameObject projGO = Instantiate<GameObject>(projectilePrefab);
-        projGO.transform.position = transform.position;
-        Rigidbody rigidB = projGO.GetComponent<Rigidbody>();
-        ProjectileHero proj = projGO.GetComponent<ProjectileHero>(); // h
-        proj.type = WeaponType.blaster;
-        float tSpeed = Main.GetWeaponDefinition(proj.type).velocity;
-        rigidB.velocity = Vector3.up * tSpeed;
     }
 
     void OnTriggerEnter(Collider other)
     {
         Transform rootT = other.gameObject.transform.root;
         GameObject go = rootT.gameObject;
-        //print("Triggered: "+go.name); // b
-        // Make sure it's not the same triggering go as last time
         if (go == lastTriggerGo)
-        { // c
+        { 
             return;
         }
-        lastTriggerGo = go; // d
+        lastTriggerGo = go; 
         if (go.tag == "Enemy")
-        { // If the shield was triggered by an enemy
-            shieldLevel--; // Decrease the level of the shield by 1
-            Destroy(go); // ... and Destroy the enemy // e
+        {
+            shieldLevel--;
+            Destroy(go);
+        }
+        else if (go.tag == "PowerUp")
+        {
+            AbsorbPowerUp(go);
         }
         else
         {
-            print("Triggered by non-Enemy: " + go.name); // f
+            print("Triggered by non-Enemy: " + go.name);
         }
     }
 
-        public float shieldLevel
+
+    public void AbsorbPowerUp(GameObject go)
+    {
+        PowerUp pu = go.GetComponent<PowerUp>();
+        switch (pu.type)
         {
+
+            case WeaponType.shield: 
+                shieldLevel++;
+                break;
+            default: 
+                if (pu.type == weapons[0].type)
+                { // If it is the same type 
+                    Weapon w = GetEmptyWeaponSlot();
+                    if (w != null)
+                    {
+                        // Set it to pu.type
+                        w.SetType(pu.type);
+                    }
+                }
+                else
+                { // If this is a different weapon type 
+                    ClearWeapons();
+                    weapons[0].SetType(pu.type);
+                }
+                break;
+        }
+                pu.AbsorbedBy(this.gameObject);
+   }
+
+
+    public float shieldLevel
+    {
         get
         {
-            return (_shieldLevel); // a
+            return (_shieldLevel); 
         }
         set
         {
-            _shieldLevel = Mathf.Min(value, 4); // b
-                                                // If the shield is going to be set to less than zero
+            _shieldLevel = Mathf.Min(value, 4); 
+
+            // If the shield is going to be set to less than zero
             if (value < 0)
             {
                 Destroy(this.gameObject);
                 // Tell Main.S to restart the game after a delay
                 Main.S.DelayedRestart(gameRestartDelay);
             }
+        }
+    }
+
+    Weapon GetEmptyWeaponSlot()
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (weapons[i].type == WeaponType.none)
+            {
+                return (weapons[i]);
+            }
+        }
+        return (null);
+    }
+    void ClearWeapons()
+    {
+        foreach (Weapon w in weapons)
+        {
+            w.SetType(WeaponType.none);
         }
     }
 }
