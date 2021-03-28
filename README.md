@@ -1,2 +1,2 @@
 # DIno-Cide
-Fun game about dinos
+A Super Fun game about dinos
