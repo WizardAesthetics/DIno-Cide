@@ -4,57 +4,62 @@ using UnityEngine;
 
 public class BoundsCheck : MonoBehaviour
 {
+    //Vairable that you need to set
     [Header("Set in Inspector")]
     public float radius = 1f;
     public bool keepOnScreen = true;
 
+    //Variables that you show in inspecteor but dont need to set
     [Header("Set Dynamically")]
     public bool isOnScreen = true;
     public float camWidth;
     public float camHeight;
 
+    //Variables you dont need to see at all
     [HideInInspector]
     public bool offRight, offLeft, offUp, offDown;
 
+    //Awake this is called before start
     void Awake()
     {
-    
-        camHeight = Camera.main.orthographicSize; // b
-        camWidth = camHeight * Camera.main.aspect; // c
+        camHeight = Camera.main.orthographicSize;  //Finds the caerma Hight
+        camWidth = camHeight * Camera.main.aspect; //findes the cmaera with
     }
 
     void LateUpdate()
     {
-        Vector3 pos = transform.position;
+        Vector3 pos = transform.position; //finds current position of this object
         isOnScreen = true;
-        offRight = offLeft = offUp = offDown = false; // b
+        offRight = offLeft = offUp = offDown = false; 
+
+        //check to see if the object is with in the map bounderies
         if (pos.x > camWidth - radius)
         {
             pos.x = camWidth - radius;
-            offRight = true; // c
+            offRight = true; 
         }
         if (pos.x < -camWidth + radius)
         {
             pos.x = -camWidth + radius;
-            offLeft = true; // c
+            offLeft = true; 
         }
         if (pos.y > camHeight - radius)
         {
             pos.y = camHeight - radius;
-            offUp = true; // c
+            offUp = true; 
         }
         if (pos.y < -camHeight + radius)
         {
             pos.y = -camHeight + radius;
-            offDown = true; // c
+            offDown = true; 
         }
 
-        isOnScreen = !(offRight || offLeft || offUp || offDown); // d
+        isOnScreen = !(offRight || offLeft || offUp || offDown);
         if (keepOnScreen && !isOnScreen)
         {
             transform.position = pos;
             isOnScreen = true;
-            offRight = offLeft = offUp = offDown = false; // e
+            offRight = offLeft = offUp = offDown = false; 
         }
     }
 
