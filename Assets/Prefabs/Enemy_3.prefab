@@ -276,6 +276,14 @@ MonoBehaviour:
   fireRate: 0.3
   health: 2
   score: 100
+  showDamageDuration: 0.1
+  powerUpDropChance: 1
+  originalColors: []
+  materials: []
+  showingDamage: 0
+  damageDoneTime: 0
+  notifiedOfDestruction: 0
+  explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!114 &7514001992578952580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +300,14 @@ MonoBehaviour:
   fireRate: 0.3
   health: 10
   score: 100
+  showDamageDuration: 0.1
+  powerUpDropChance: 1
+  originalColors: []
+  materials: []
+  showingDamage: 0
+  damageDoneTime: 0
+  notifiedOfDestruction: 0
+  explosion: {fileID: 0}
   lifeTime: 5
   points: []
   birthTime: 0
