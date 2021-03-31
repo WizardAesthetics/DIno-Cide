@@ -24,6 +24,8 @@ public class Enemy_0 : MonoBehaviour
 
     public static int totalScore;
     public static int goalProgress;
+    public GameObject explosion;
+
 
     void Awake()
     {
@@ -93,6 +95,8 @@ public class Enemy_0 : MonoBehaviour
                     if (!notifiedOfDestruction)
                     {
                         Main.S.shipDestroyed(this);
+                        var cloneExplosion=Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+                        Destroy(cloneExplosion, 2f);
                     }
                     notifiedOfDestruction = true;
                     // Destroy this Enemy
