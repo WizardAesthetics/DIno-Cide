@@ -59,7 +59,7 @@ public class Hero : MonoBehaviour
         goalProgress.text = "Goal : " + Enemy_0.goalProgress + "\\" + goal;
         if (Enemy_0.goalProgress >= goal) 
         {
-            Main.complete();
+            PauseMenu.complete = true;
         }
     }
 
