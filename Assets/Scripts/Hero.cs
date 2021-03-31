@@ -11,6 +11,7 @@ public class Hero : MonoBehaviour
     public float pitchMult = 30;
     public float gameRestartDelay = 2f;
     public GameObject projectilePrefab;
+    public GameObject explosion;
     public float projectileSpeed = 40;
     public Weapon[] weapons;
 
@@ -63,6 +64,7 @@ public class Hero : MonoBehaviour
         {
             shieldLevel--;
             Destroy(go);
+            Instantiate(explosion, go.transform.position, Quaternion.identity);
         }
         else if (go.tag == "PowerUp")
         {
@@ -119,6 +121,7 @@ public class Hero : MonoBehaviour
             if (value < 0)
             {
                 Destroy(this.gameObject);
+                Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
                 // Tell Main.S to restart the game after a delay
                 Main.S.DelayedRestart(gameRestartDelay);
             }
