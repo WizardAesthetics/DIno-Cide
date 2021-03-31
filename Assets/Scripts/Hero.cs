@@ -64,7 +64,8 @@ public class Hero : MonoBehaviour
         {
             shieldLevel--;
             Destroy(go);
-            Instantiate(explosion, go.transform.position, Quaternion.identity);
+            var cloneExplosion=Instantiate(explosion, go.transform.position, Quaternion.identity);
+            Destroy(cloneExplosion, 2f);
         }
         else if (go.tag == "PowerUp")
         {
@@ -121,7 +122,8 @@ public class Hero : MonoBehaviour
             if (value < 0)
             {
                 Destroy(this.gameObject);
-                Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+                var cloneExplosion=Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+                Destroy(cloneExplosion, 2f);
                 // Tell Main.S to restart the game after a delay
                 Main.S.DelayedRestart(gameRestartDelay);
             }

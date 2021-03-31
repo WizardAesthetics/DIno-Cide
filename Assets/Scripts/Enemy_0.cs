@@ -92,7 +92,8 @@ public class Enemy_0 : MonoBehaviour
                     if (!notifiedOfDestruction)
                     {
                         Main.S.shipDestroyed(this);
-                        Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+                        var cloneExplosion=Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+                        Destroy(cloneExplosion, 2f);
                     }
                     notifiedOfDestruction = true;
                     // Destroy this Enemy
