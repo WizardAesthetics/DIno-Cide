@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class Hero : MonoBehaviour
 {
     static public Hero S;
@@ -13,6 +15,8 @@ public class Hero : MonoBehaviour
     public GameObject projectilePrefab;
     public float projectileSpeed = 40;
     public Weapon[] weapons;
+    public Text score;
+    public Text goalProgress;
 
 
     [Header("Set Dynamically")]
@@ -22,6 +26,7 @@ public class Hero : MonoBehaviour
     // Declare a new delegate type WeaponFireDelegate
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
+    public int goal;
 
 
     void Start()
@@ -30,6 +35,7 @@ public class Hero : MonoBehaviour
 
         ClearWeapons();
         weapons[0].SetType(WeaponType.blaster);
+        goal = 25;
     }
     void Update()
     {
@@ -47,6 +53,12 @@ public class Hero : MonoBehaviour
         if (Input.GetAxis("Jump") == 1 && fireDelegate != null)
         {
             fireDelegate();
+        }
+        score.text = "Score : " + Enemy_0.totalScore;
+        goalProgress.text = "Goal : " + Enemy_0.goalProgress + "\\" + goal;
+        if (Enemy_0.goalProgress >= goal) 
+        {
+            Main.complete();
         }
     }
 

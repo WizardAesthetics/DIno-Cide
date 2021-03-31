@@ -20,7 +20,10 @@ public class Enemy_0 : MonoBehaviour
     public bool notifiedOfDestruction = false; // Will be used later
 
     protected BoundsCheck bndCheck;
+    public GameObject playerHud;
 
+    public static int totalScore;
+    public static int goalProgress;
 
     void Awake()
     {
@@ -94,6 +97,8 @@ public class Enemy_0 : MonoBehaviour
                     notifiedOfDestruction = true;
                     // Destroy this Enemy
                     Destroy(this.gameObject);
+                    totalScore += score;
+                    goalProgress++;
                 
                 }
                 Destroy(otherGO);
