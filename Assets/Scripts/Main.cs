@@ -101,4 +101,10 @@ public class Main : MonoBehaviour
         return (new WeaponDefinition()
         );
     }
+
+    private void Update()
+    {
+
+        Debug.Log((Enemy_0.count.ToString()));
+    }
 }

@@ -21,6 +21,9 @@ public class Enemy_0 : MonoBehaviour
 
     protected BoundsCheck bndCheck;
 
+    public GameObject explosion;
+    public static int count = 0;
+
 
     void Awake()
     {
@@ -89,12 +92,15 @@ public class Enemy_0 : MonoBehaviour
                   // Destroy this Enemy
                     if (!notifiedOfDestruction)
                     {
+                        count += 100;
                         Main.S.shipDestroyed(this);
+                        var cloneExplosion=Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+                        Destroy(cloneExplosion, 2f);
                     }
                     notifiedOfDestruction = true;
                     // Destroy this Enemy
                     Destroy(this.gameObject);
-                
+
                 }
                 Destroy(otherGO);
                 break;
