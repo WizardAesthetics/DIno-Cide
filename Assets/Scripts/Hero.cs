@@ -54,10 +54,8 @@ public class Hero : MonoBehaviour
         {
             fireDelegate();
         }
-
         score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal*100); ;
         //goalProgress.text = "Goal : " + Enemy_0.goalProgress + "\\" + goal;
-
         if (Enemy_0.goalProgress >= goal) 
         {
             PauseMenu.complete = true;
