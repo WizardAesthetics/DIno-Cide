@@ -9,8 +9,12 @@ public class ScrollingBack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
 
 
+=======
+        
+>>>>>>> origin/BlakesBranch
     }
 
     // Update is called once per frame

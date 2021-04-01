@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
+<<<<<<< HEAD
     static public int score = 0;
+=======
+>>>>>>> origin/BlakesBranch
     static public Main S; // A singleton for Main
     [Header("Set in Inspector")]
     public GameObject[] prefabEnemies; // Array of Enemy prefabs
@@ -18,7 +21,10 @@ public class Main : MonoBehaviour
     WeaponType.spread, WeaponType.shield };
     private BoundsCheck bndCheck;
     static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
+<<<<<<< HEAD
     public GameObject completeScreen;
+=======
+>>>>>>> origin/BlakesBranch
 
     public void shipDestroyed(Enemy_0 e)
     {
@@ -57,12 +63,15 @@ public class Main : MonoBehaviour
             WEAP_DICT[def.type] = def;
         }
     }
+<<<<<<< HEAD
 
     internal static void complete()
     {
         throw new System.NotImplementedException();
     }
 
+=======
+>>>>>>> origin/BlakesBranch
     public void SpawnEnemy()
     {
         // Pick a random Enemy prefab to instantiate
@@ -109,4 +118,13 @@ public class Main : MonoBehaviour
         return (new WeaponDefinition()
         );
     }
+<<<<<<< HEAD
+=======
+
+    private void Update()
+    {
+
+        Debug.Log((Enemy_0.count.ToString()));
+    }
+>>>>>>> origin/BlakesBranch
 }

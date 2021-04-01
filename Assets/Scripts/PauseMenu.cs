@@ -6,10 +6,15 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+<<<<<<< HEAD
     public static bool complete = false;
 
     public GameObject pauseMenuUI;
     public GameObject completeOverlay;
+=======
+
+    public GameObject pauseMenuUI;
+>>>>>>> origin/BlakesBranch
 
     // Update is called once per frame
     void Update()
@@ -27,7 +32,10 @@ public class PauseMenu : MonoBehaviour
             }
         }
 
+<<<<<<< HEAD
         if (complete) { Complete(); }
+=======
+>>>>>>> origin/BlakesBranch
     }
 
 
@@ -48,11 +56,16 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
+<<<<<<< HEAD
         SceneManager.LoadScene("Menu");
+=======
+        //SceneManager.LoadScene("Menu");
+>>>>>>> origin/BlakesBranch
     }
 
     public void QuitMenu()
     {
+<<<<<<< HEAD
         Debug.Log("exit game");
         Application.Quit();
     }
@@ -62,4 +75,8 @@ public class PauseMenu : MonoBehaviour
         completeOverlay.SetActive(true);
         Invoke("LoadMenu", 2f);
     }
+=======
+        Application.Quit();
+    }
+>>>>>>> origin/BlakesBranch
 }

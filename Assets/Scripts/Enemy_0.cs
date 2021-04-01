@@ -20,11 +20,17 @@ public class Enemy_0 : MonoBehaviour
     public bool notifiedOfDestruction = false; // Will be used later
 
     protected BoundsCheck bndCheck;
+<<<<<<< HEAD
     public GameObject playerHud;
 
     public static int totalScore;
     public static int goalProgress;
     public GameObject explosion;
+=======
+
+    public GameObject explosion;
+    public static int count = 0;
+>>>>>>> origin/BlakesBranch
 
 
     void Awake()
@@ -94,6 +100,10 @@ public class Enemy_0 : MonoBehaviour
                   // Destroy this Enemy
                     if (!notifiedOfDestruction)
                     {
+<<<<<<< HEAD
+=======
+                        count += 100;
+>>>>>>> origin/BlakesBranch
                         Main.S.shipDestroyed(this);
                         var cloneExplosion=Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
                         Destroy(cloneExplosion, 2f);
@@ -101,9 +111,13 @@ public class Enemy_0 : MonoBehaviour
                     notifiedOfDestruction = true;
                     // Destroy this Enemy
                     Destroy(this.gameObject);
+<<<<<<< HEAD
                     totalScore += score;
                     goalProgress++;
                 
+=======
+
+>>>>>>> origin/BlakesBranch
                 }
                 Destroy(otherGO);
                 break;
