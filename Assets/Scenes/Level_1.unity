@@ -1799,7 +1799,11 @@ MonoBehaviour:
   - {fileID: 983700888}
   - {fileID: 1211463832}
   - {fileID: 686099227}
+<<<<<<< HEAD
   score: {fileID: 1335079189}
+=======
+  score: {fileID: 0}
+>>>>>>> origin/BlakesBranch
   goalProgress: {fileID: 0}
   _shieldLevel: 4
   goal: 0
