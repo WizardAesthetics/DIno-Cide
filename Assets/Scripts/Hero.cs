@@ -17,7 +17,6 @@ public class Hero : MonoBehaviour
     public float projectileSpeed = 40;
     public Weapon[] weapons;
     public Text score;
-    public Text goalProgress;
 
 
     [Header("Set Dynamically")]
@@ -55,8 +54,8 @@ public class Hero : MonoBehaviour
         {
             fireDelegate();
         }
-        score.text = "Score : " + Enemy_0.totalScore;
-        goalProgress.text = "Goal : " + Enemy_0.goalProgress + "\\" + goal;
+        score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal*100); ;
+        //goalProgress.text = "Goal : " + Enemy_0.goalProgress + "\\" + goal;
         if (Enemy_0.goalProgress >= goal) 
         {
             PauseMenu.complete = true;
