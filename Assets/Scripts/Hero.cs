@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
@@ -17,7 +18,6 @@ public class Hero : MonoBehaviour
     public float projectileSpeed = 40;
     public Weapon[] weapons;
     public Text score;
-    public Text goalProgress;
 
 
     [Header("Set Dynamically")]
@@ -36,7 +36,23 @@ public class Hero : MonoBehaviour
 
         ClearWeapons();
         weapons[0].SetType(WeaponType.blaster);
-        goal = 25;
+        PauseMenu.complete = false;
+        Enemy_0.goalProgress = 0;
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            goal = 25;
+            score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal * 100);
+        } else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            goal = 30;
+            score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal * 100);
+        } else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            goal = 35;
+            score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal * 100);
+        }
+
     }
     void Update()
     {
@@ -55,8 +71,8 @@ public class Hero : MonoBehaviour
         {
             fireDelegate();
         }
-        score.text = "Score : " + Enemy_0.totalScore;
-        goalProgress.text = "Goal : " + Enemy_0.goalProgress + "\\" + goal;
+        score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal*100);
+        //goalProgress.text = "Goal : " + Enemy_0.goalProgress + "\\" + goal;
         if (Enemy_0.goalProgress >= goal) 
         {
             PauseMenu.complete = true;

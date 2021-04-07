@@ -20,7 +20,7 @@ public class Enemy_0 : MonoBehaviour
     public bool notifiedOfDestruction = false; // Will be used later
 
     protected BoundsCheck bndCheck;
-    public GameObject playerHud;
+    //public GameObject playerHud;
 
     public static int totalScore;
     public static int goalProgress;
