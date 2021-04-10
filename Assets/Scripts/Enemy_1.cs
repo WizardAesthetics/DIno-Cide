@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- //Enemy_1 is a sub class of Enemy_0
+using UnityEngine.SceneManagement;
+//Enemy_1 is a sub class of Enemy_0
 public class Enemy_1 : Enemy_0
 {
     [Header("Set in Inspector: Enemy_1")]
@@ -20,6 +21,18 @@ public class Enemy_1 : Enemy_0
         // Set x0 to the initial x position of Enemy_1
         x0 = pos.x; 
         birthTime = Time.time;
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            health = 3;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            health = 5;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            health = 8;
+        }
     }
 
     // Overrides the Move function on Enemy

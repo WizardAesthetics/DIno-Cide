@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class Enemy_3 : Enemy_0
 { // Enemy_3 extends Enemy
   // Enemy_3 will move following a Bezier curve, which is a linear
@@ -37,6 +39,8 @@ public class Enemy_3 : Enemy_0
         points[2] = v;
         // Set the birthTime to the current time
         birthTime = Time.time;
+
+        health = 1;
     }
     public override void Move()
     {

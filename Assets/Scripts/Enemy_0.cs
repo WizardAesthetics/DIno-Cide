@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Enemy_0 : MonoBehaviour
@@ -7,10 +8,9 @@ public class Enemy_0 : MonoBehaviour
     [Header("Set in Inspector: Enemy")]
     public float speed = 10f; // The speed in m/s
     public float fireRate = 0.3f; // Seconds/shot (Unused)
-    public float health = 10;
     public int score = 100; // Points earned for destroying this
-    public float showDamageDuration = 0.1f; // # seconds to show damage 
-    public float powerUpDropChance = 1f;
+    public float showDamageDuration = 0.1f; // # seconds to show damage
+    public GameObject projectileEnemy;
 
     [Header("Set Dynamically: Enemy")]
     public Color[] originalColors;
@@ -18,6 +18,8 @@ public class Enemy_0 : MonoBehaviour
     public bool showingDamage = false;
     public float damageDoneTime; // Time to stop showing damage
     public bool notifiedOfDestruction = false; // Will be used later
+    public float health;
+    public float powerUpDropChance = 1f;
 
     protected BoundsCheck bndCheck;
     //public GameObject playerHud;
@@ -36,6 +38,22 @@ public class Enemy_0 : MonoBehaviour
         for (int i = 0; i < materials.Length; i++)
         {
             originalColors[i] = materials[i].color;
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            health = 4;
+            powerUpDropChance = 0.75f;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            health = 6;
+            powerUpDropChance = 0.5f;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            health = 10;
+            powerUpDropChance = 0.3f;
         }
     }
 
@@ -132,4 +150,5 @@ public class Enemy_0 : MonoBehaviour
         }
         showingDamage = false;
     }
+
 }
