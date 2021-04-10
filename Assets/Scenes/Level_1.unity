@@ -1191,7 +1191,7 @@ MonoBehaviour:
     velocity: 0
   prefabPowerUp: {fileID: 4509056554894313708, guid: 74956933fba194b448c5ea297e3ba4e4,
     type: 3}
-  powerUpFrequency: 01000000010000000200000006000000
+  powerUpFrequency: 01000000010000000200000003000000
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0

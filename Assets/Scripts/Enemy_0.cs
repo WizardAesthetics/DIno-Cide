@@ -19,7 +19,7 @@ public class Enemy_0 : MonoBehaviour
     public float damageDoneTime; // Time to stop showing damage
     public bool notifiedOfDestruction = false; // Will be used later
     public float health;
-    public float powerUpDropChance = 1f;
+    public float powerUpDropChance;
 
     protected BoundsCheck bndCheck;
     //public GameObject playerHud;
