@@ -1651,7 +1651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e11e040115297440a8ca811fd981000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bspeed: 0.4
+  Bspeed: 0.1
   Brend: {fileID: 1457645797}
 --- !u!23 &1457645797
 MeshRenderer:
@@ -1671,7 +1671,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a93423513e85c3246a49530074c05772, type: 2}
+  - {fileID: 2100000, guid: 33a820989b664be4783373dcccf39447, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1709,7 +1709,7 @@ Transform:
   m_GameObject: {fileID: 1457645795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 70.5, y: 120, z: 1}
+  m_LocalScale: {x: 70.5, y: 375.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
