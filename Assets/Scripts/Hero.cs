@@ -42,15 +42,15 @@ public class Hero : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             goal = 25;
-            score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal * 100);
         } else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             goal = 30;
-            score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal * 100);
         } else if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             goal = 35;
-            score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal * 100);
+        } else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            goal = 10000;
         }
 
     }
@@ -71,12 +71,22 @@ public class Hero : MonoBehaviour
         {
             fireDelegate();
         }
-        score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal*100);
-        //goalProgress.text = "Goal : " + Enemy_0.goalProgress + "\\" + goal;
-        if (Enemy_0.goalProgress >= goal) 
+
+        if (SceneManager.GetActiveScene().buildIndex == 4)
         {
-            PauseMenu.complete = true;
+            score.text = "Score : " + Enemy_0.totalScore;
+        } else
+        {
+            score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal*100);
+            //goalProgress.text = "Goal : " + Enemy_0.goalProgress + "\\" + goal;
+             if (Enemy_0.goalProgress >= goal) 
+            {
+                 PauseMenu.complete = true;
+             }
         }
+
+        
+        
     }
 
     void OnTriggerEnter(Collider other)

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class Enemy_2 : Enemy_0
 {
     [Header("Set in Inspector: Enemy_2")]
@@ -36,7 +38,24 @@ public class Enemy_2 : Enemy_0
         }
 
         // Set the birthTime to the current time
-        birthTime = Time.time; 
+        birthTime = Time.time;
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            health = 1;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            health = 3;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            health = 4;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            health = 6;
+        }
     }
 
     //Over rides the move in Emeny_0

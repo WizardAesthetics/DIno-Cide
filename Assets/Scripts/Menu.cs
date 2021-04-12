@@ -14,5 +14,10 @@ public class Menu : MonoBehaviour
         Debug.Log("exit game");
         Application.Quit();
     }
+    public void LoadLevelEndless()
+    {
+        Debug.Log("cLICKED eNDLESS mODE");
+        SceneManager.LoadScene("Level_4");
+    }
 
 }

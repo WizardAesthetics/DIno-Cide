@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Part
@@ -39,6 +40,23 @@ public class Enemy_4 : Enemy_0
                 prt.go = t.gameObject;
                 prt.mat = prt.go.GetComponent<Renderer>().material;
             }
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            health = 3;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            health = 5;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            health = 6;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            health = 8;
         }
     }
 

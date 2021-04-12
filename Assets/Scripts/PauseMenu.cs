@@ -9,7 +9,6 @@ public class PauseMenu : MonoBehaviour
     public static bool complete = false;
 
     public GameObject pauseMenuUI;
-    //public GameObject completeOverlay;
 
     // Update is called once per frame
     void Update()
@@ -68,7 +67,11 @@ public class PauseMenu : MonoBehaviour
         }
         else 
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+
+            }
+            SceneManager.LoadScene("Menu");
         }
     }
 }
