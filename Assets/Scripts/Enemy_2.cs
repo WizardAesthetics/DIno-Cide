@@ -52,6 +52,10 @@ public class Enemy_2 : Enemy_0
         {
             health = 4;
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            health = 6;
+        }
     }
 
     //Over rides the move in Emeny_0

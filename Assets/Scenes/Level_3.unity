@@ -1186,7 +1186,7 @@ MonoBehaviour:
     velocity: 0
   prefabPowerUp: {fileID: 4509056554894313708, guid: 74956933fba194b448c5ea297e3ba4e4,
     type: 3}
-  powerUpFrequency: 01000000010000000200000006000000
+  powerUpFrequency: 01000000010000000200000003000000
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,7 +1351,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1798629438}
-  completeOverlay: {fileID: 0}
 --- !u!114 &1254742365
 MonoBehaviour:
   m_ObjectHideFlags: 0

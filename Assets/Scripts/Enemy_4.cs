@@ -54,6 +54,10 @@ public class Enemy_4 : Enemy_0
         {
             health = 6;
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            health = 8;
+        }
     }
 
 

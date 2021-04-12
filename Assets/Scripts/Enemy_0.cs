@@ -55,6 +55,11 @@ public class Enemy_0 : MonoBehaviour
             health = 10;
             powerUpDropChance = 0.3f;
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            health = 13;
+            powerUpDropChance = 0.15f;
+        }
     }
 
     public Vector3 pos
@@ -87,7 +92,14 @@ public class Enemy_0 : MonoBehaviour
     public virtual void Move()
     { 
         Vector3 tempPos = pos;
-        tempPos.y -= speed * Time.deltaTime;
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            tempPos.y -= 80f * Time.deltaTime;
+        } else
+        {
+            tempPos.y -= speed * Time.deltaTime;
+        }
+        
         pos = tempPos;
     }
 

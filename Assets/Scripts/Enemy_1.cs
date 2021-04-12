@@ -33,6 +33,10 @@ public class Enemy_1 : Enemy_0
         {
             health = 8;
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            health = 10;
+        }
     }
 
     // Overrides the Move function on Enemy
