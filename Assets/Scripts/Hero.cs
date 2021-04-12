@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class Hero : MonoBehaviour
 {
     static public Hero S;
@@ -14,6 +17,7 @@ public class Hero : MonoBehaviour
     public GameObject explosion;
     public float projectileSpeed = 40;
     public Weapon[] weapons;
+    public Text score;
 
 
     [Header("Set Dynamically")]
@@ -23,6 +27,7 @@ public class Hero : MonoBehaviour
     // Declare a new delegate type WeaponFireDelegate
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
+    public int goal;
 
 
     void Start()
@@ -31,8 +36,6 @@ public class Hero : MonoBehaviour
 
         ClearWeapons();
         weapons[0].SetType(WeaponType.blaster);
-<<<<<<< Updated upstream
-=======
         PauseMenu.complete = false;
         Enemy_0.goalProgress = 0;
 
@@ -50,7 +53,6 @@ public class Hero : MonoBehaviour
             goal = 10000;
         }
 
->>>>>>> Stashed changes
     }
     void Update()
     {
@@ -69,8 +71,6 @@ public class Hero : MonoBehaviour
         {
             fireDelegate();
         }
-<<<<<<< Updated upstream
-=======
 
         if (SceneManager.GetActiveScene().buildIndex == 4)
         {
@@ -87,7 +87,6 @@ public class Hero : MonoBehaviour
 
         
         
->>>>>>> Stashed changes
     }
 
     void OnTriggerEnter(Collider other)

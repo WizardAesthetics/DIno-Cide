@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- //Enemy_1 is a sub class of Enemy_0
+using UnityEngine.SceneManagement;
+//Enemy_1 is a sub class of Enemy_0
 public class Enemy_1 : Enemy_0
 {
     [Header("Set in Inspector: Enemy_1")]
@@ -20,8 +21,6 @@ public class Enemy_1 : Enemy_0
         // Set x0 to the initial x position of Enemy_1
         x0 = pos.x; 
         birthTime = Time.time;
-<<<<<<< Updated upstream
-=======
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             health = 3;
@@ -38,7 +37,6 @@ public class Enemy_1 : Enemy_0
         {
             health = 10;
         }
->>>>>>> Stashed changes
     }
 
     // Overrides the Move function on Enemy

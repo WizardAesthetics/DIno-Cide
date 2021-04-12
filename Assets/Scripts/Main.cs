@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
+    //static public int score = 0;
     static public Main S; // A singleton for Main
     [Header("Set in Inspector")]
     public GameObject[] prefabEnemies; // Array of Enemy prefabs
@@ -54,7 +55,16 @@ public class Main : MonoBehaviour
         {
             WEAP_DICT[def.type] = def;
         }
+        Enemy_0.totalScore = 0;
+        Enemy_0.goalProgress = 0;
+        PauseMenu.complete = false;
     }
+
+    internal static void complete()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void SpawnEnemy()
     {
         // Pick a random Enemy prefab to instantiate

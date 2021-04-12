@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class Enemy_2 : Enemy_0
 {
     [Header("Set in Inspector: Enemy_2")]
@@ -36,9 +38,6 @@ public class Enemy_2 : Enemy_0
         }
 
         // Set the birthTime to the current time
-<<<<<<< Updated upstream
-        birthTime = Time.time; 
-=======
         birthTime = Time.time;
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
@@ -57,7 +56,6 @@ public class Enemy_2 : Enemy_0
         {
             health = 6;
         }
->>>>>>> Stashed changes
     }
 
     //Over rides the move in Emeny_0

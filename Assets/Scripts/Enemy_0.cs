@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Enemy_0 : MonoBehaviour
@@ -7,10 +8,9 @@ public class Enemy_0 : MonoBehaviour
     [Header("Set in Inspector: Enemy")]
     public float speed = 10f; // The speed in m/s
     public float fireRate = 0.3f; // Seconds/shot (Unused)
-    public float health = 10;
     public int score = 100; // Points earned for destroying this
-    public float showDamageDuration = 0.1f; // # seconds to show damage 
-    public float powerUpDropChance = 1f;
+    public float showDamageDuration = 0.1f; // # seconds to show damage
+    public GameObject projectileEnemy;
 
     [Header("Set Dynamically: Enemy")]
     public Color[] originalColors;
@@ -18,9 +18,14 @@ public class Enemy_0 : MonoBehaviour
     public bool showingDamage = false;
     public float damageDoneTime; // Time to stop showing damage
     public bool notifiedOfDestruction = false; // Will be used later
+    public float health;
+    public float powerUpDropChance;
 
     protected BoundsCheck bndCheck;
+    //public GameObject playerHud;
 
+    public static int totalScore;
+    public static int goalProgress;
     public GameObject explosion;
 
 
@@ -34,8 +39,6 @@ public class Enemy_0 : MonoBehaviour
         {
             originalColors[i] = materials[i].color;
         }
-<<<<<<< Updated upstream
-=======
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
@@ -57,7 +60,6 @@ public class Enemy_0 : MonoBehaviour
             health = 13;
             powerUpDropChance = 0.15f;
         }
->>>>>>> Stashed changes
     }
 
     public Vector3 pos
@@ -129,7 +131,9 @@ public class Enemy_0 : MonoBehaviour
                     notifiedOfDestruction = true;
                     // Destroy this Enemy
                     Destroy(this.gameObject);
-
+                    totalScore += score;
+                    goalProgress++;
+                
                 }
                 Destroy(otherGO);
                 break;
@@ -158,4 +162,5 @@ public class Enemy_0 : MonoBehaviour
         }
         showingDamage = false;
     }
+
 }
