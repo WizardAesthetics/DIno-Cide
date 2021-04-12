@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
-    static public int score = 0;
+    //static public int score = 0;
     static public Main S; // A singleton for Main
     [Header("Set in Inspector")]
     public GameObject[] prefabEnemies; // Array of Enemy prefabs
@@ -18,7 +18,6 @@ public class Main : MonoBehaviour
     WeaponType.spread, WeaponType.shield };
     private BoundsCheck bndCheck;
     static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
-    public GameObject completeScreen;
 
     public void shipDestroyed(Enemy_0 e)
     {
@@ -56,6 +55,9 @@ public class Main : MonoBehaviour
         {
             WEAP_DICT[def.type] = def;
         }
+        Enemy_0.totalScore = 0;
+        Enemy_0.goalProgress = 0;
+        PauseMenu.complete = false;
     }
 
     internal static void complete()
@@ -83,7 +85,14 @@ public class Main : MonoBehaviour
         pos.y = bndCheck.camHeight + enemyPadding;
         go.transform.position = pos;
         // Invoke SpawnEnemy() again
-        Invoke("SpawnEnemy", 1f / enemySpawnPerSecond); // g
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            Invoke("SpawnEnemy", 1f / 1); // g
+        } else
+        {
+            Invoke("SpawnEnemy", 1f / enemySpawnPerSecond); // g
+        }
+        
     }
 
     public void DelayedRestart(float delay)

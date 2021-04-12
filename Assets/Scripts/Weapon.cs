@@ -7,9 +7,6 @@ public enum WeaponType
     none, // The default / no weapon
     blaster, // A simple blaster
     spread, // Two shots simultaneously
-    phaser, // [NI] Shots that move in waves
-    missile, // [NI] Homing missiles
-    laser, // [NI]Damage over time
     shield // Raise shieldLevel
 }
 
@@ -45,7 +42,7 @@ public class Weapon : MonoBehaviour
 
          // Dynamically create an anchor for all Projectiles
         if (PROJECTILE_ANCHOR == null)
-        { // b
+        { 
             GameObject go = new GameObject("_ProjectileAnchor");
             PROJECTILE_ANCHOR = go.transform;
         }
@@ -95,12 +92,12 @@ public class Weapon : MonoBehaviour
             vel.y = -vel.y;
         }
         switch (type)
-        { // k
+        { 
             case WeaponType.blaster:
                 p = MakeProjectile();
                 p.rigid.velocity = vel;
                 break;
-            case WeaponType.spread: // l
+            case WeaponType.spread: 
                 p = MakeProjectile(); // Make middle Projectile
                 p.rigid.velocity = vel;
                 p = MakeProjectile(); // Make right Projectile
@@ -116,7 +113,7 @@ public class Weapon : MonoBehaviour
     { 
         GameObject go = Instantiate<GameObject>(def.projectilePrefab);
         if (transform.parent.gameObject.tag == "Hero")
-        { // n
+        { 
             go.tag = "ProjectileHero";
             go.layer = LayerMask.NameToLayer("ProjectileHero");
         }

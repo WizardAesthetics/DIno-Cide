@@ -1148,13 +1148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabEnemies:
   - {fileID: 2033569218011589898, guid: 33bc5d4a83a94b84092ca27146818668, type: 3}
-  - {fileID: 2033569218011589898, guid: 33bc5d4a83a94b84092ca27146818668, type: 3}
-  - {fileID: 2033569218011589898, guid: 33bc5d4a83a94b84092ca27146818668, type: 3}
-  - {fileID: 7022447332850672536, guid: bb650d3a7b0f36542b7f61e880cda80c, type: 3}
   - {fileID: 7022447332850672536, guid: bb650d3a7b0f36542b7f61e880cda80c, type: 3}
   - {fileID: 2424021889193737998, guid: 02fd7164edab5f2499fb32525422e31c, type: 3}
-  - {fileID: 2424021889193737998, guid: 02fd7164edab5f2499fb32525422e31c, type: 3}
-  - {fileID: 6187042659834087104, guid: 8ccf344104d366247a6c35ff1d1d4d3f, type: 3}
   - {fileID: 6187042659834087104, guid: 8ccf344104d366247a6c35ff1d1d4d3f, type: 3}
   - {fileID: 7602795482042455048, guid: 92a12a6cf0911284ea19aca0dd6c5642, type: 3}
   enemySpawnPerSecond: 0.5
