@@ -61,17 +61,13 @@ public class PauseMenu : MonoBehaviour
 
     public void Complete()
     {
-        if (SceneManager.GetActiveScene().buildIndex+1 >= SceneManager.sceneCountInBuildSettings)
+        if (SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCountInBuildSettings - 1)
         {
             SceneManager.LoadScene(0);
         }
-        else 
+        else
         {
-            if (SceneManager.GetActiveScene().buildIndex == 3)
-            {
-
-            }
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
