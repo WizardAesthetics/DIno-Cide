@@ -20,6 +20,25 @@ public class Enemy_1 : Enemy_0
         // Set x0 to the initial x position of Enemy_1
         x0 = pos.x; 
         birthTime = Time.time;
+<<<<<<< Updated upstream
+=======
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            health = 3;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            health = 5;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            health = 8;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            health = 10;
+        }
+>>>>>>> Stashed changes
     }
 
     // Overrides the Move function on Enemy

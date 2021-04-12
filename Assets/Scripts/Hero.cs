@@ -31,6 +31,26 @@ public class Hero : MonoBehaviour
 
         ClearWeapons();
         weapons[0].SetType(WeaponType.blaster);
+<<<<<<< Updated upstream
+=======
+        PauseMenu.complete = false;
+        Enemy_0.goalProgress = 0;
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            goal = 25;
+        } else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            goal = 30;
+        } else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            goal = 35;
+        } else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            goal = 10000;
+        }
+
+>>>>>>> Stashed changes
     }
     void Update()
     {
@@ -49,6 +69,25 @@ public class Hero : MonoBehaviour
         {
             fireDelegate();
         }
+<<<<<<< Updated upstream
+=======
+
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            score.text = "Score : " + Enemy_0.totalScore;
+        } else
+        {
+            score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal*100);
+            //goalProgress.text = "Goal : " + Enemy_0.goalProgress + "\\" + goal;
+             if (Enemy_0.goalProgress >= goal) 
+            {
+                 PauseMenu.complete = true;
+             }
+        }
+
+        
+        
+>>>>>>> Stashed changes
     }
 
     void OnTriggerEnter(Collider other)

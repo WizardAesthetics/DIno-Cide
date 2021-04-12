@@ -52,4 +52,23 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
+<<<<<<< Updated upstream
+=======
+
+    public void Complete()
+    {
+        if (SceneManager.GetActiveScene().buildIndex+1 >= SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else 
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+
+            }
+            SceneManager.LoadScene("Menu");
+        }
+    }
+>>>>>>> Stashed changes
 }

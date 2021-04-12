@@ -36,7 +36,28 @@ public class Enemy_2 : Enemy_0
         }
 
         // Set the birthTime to the current time
+<<<<<<< Updated upstream
         birthTime = Time.time; 
+=======
+        birthTime = Time.time;
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            health = 1;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            health = 3;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            health = 4;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            health = 6;
+        }
+>>>>>>> Stashed changes
     }
 
     //Over rides the move in Emeny_0
