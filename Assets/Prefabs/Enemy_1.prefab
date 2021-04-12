@@ -86,15 +86,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fireRate: 0.3
-  health: 3
   score: 100
   showDamageDuration: 0.1
-  powerUpDropChance: 0.75
+  projectileEnemy: {fileID: 0}
   originalColors: []
   materials: []
   showingDamage: 0
   damageDoneTime: 0
   notifiedOfDestruction: 0
+  health: 3
+  powerUpDropChance: 0.75
   explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   waveFrequency: 2
   waveWidth: 4

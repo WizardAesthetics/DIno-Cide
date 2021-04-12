@@ -96,6 +96,7 @@ public class Weapon : MonoBehaviour
             case WeaponType.blaster:
                 p = MakeProjectile();
                 p.rigid.velocity = vel;
+                this.GetComponent<AudioSource>().Play();
                 break;
             case WeaponType.spread: 
                 p = MakeProjectile(); // Make middle Projectile
@@ -106,6 +107,7 @@ public class Weapon : MonoBehaviour
                 p = MakeProjectile(); // Make left Projectile
                 p.transform.rotation = Quaternion.AngleAxis(-10, Vector3.back);
                 p.rigid.velocity = p.transform.rotation * vel;
+                this.GetComponent<AudioSource>().Play();
                 break;
         }
     }

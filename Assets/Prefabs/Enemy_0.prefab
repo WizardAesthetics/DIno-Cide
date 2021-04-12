@@ -181,6 +181,8 @@ MonoBehaviour:
   fireRate: 0.3
   score: 100
   showDamageDuration: 0.1
+  projectileEnemy: {fileID: 8415635165163792139, guid: 69e2ac48d3228c84c86c49b35e7f0743,
+    type: 3}
   originalColors: []
   materials: []
   showingDamage: 0
@@ -189,8 +191,6 @@ MonoBehaviour:
   health: 4
   powerUpDropChance: 0.75
   explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
-  projectileEnemy: {fileID: 8415635165163792139, guid: 69e2ac48d3228c84c86c49b35e7f0743,
-    type: 3}
 --- !u!1 &2033569218092030555
 GameObject:
   m_ObjectHideFlags: 0
