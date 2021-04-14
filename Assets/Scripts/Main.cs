@@ -102,8 +102,12 @@ public class Main : MonoBehaviour
     }
     public void Restart()
     {
-        // Reload _Scene_0 to restart the game
-        SceneManager.LoadScene("Level_1");
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            SceneManager.LoadScene(0);
+            return;
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     static public WeaponDefinition GetWeaponDefinition(WeaponType wt)

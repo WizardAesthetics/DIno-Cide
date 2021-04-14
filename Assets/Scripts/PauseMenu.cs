@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour
     public static bool complete = false;
 
     public GameObject pauseMenuUI;
+    public Animator transition;
+    public float transitionTime = 4f;
 
     // Update is called once per frame
     void Update()
@@ -26,9 +28,10 @@ public class PauseMenu : MonoBehaviour
             }
         }
 
-        if (complete) {
+        if (complete)
+        {
             complete = false;
-            Complete(); 
+            Complete();
         }
     }
 
@@ -61,17 +64,23 @@ public class PauseMenu : MonoBehaviour
 
     public void Complete()
     {
-        if (SceneManager.GetActiveScene().buildIndex+1 >= SceneManager.sceneCountInBuildSettings)
+        if (SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCountInBuildSettings - 1)
         {
-            SceneManager.LoadScene(0);
+            StartCoroutine(Transit(0));
         }
-        else 
+        else
         {
-            if (SceneManager.GetActiveScene().buildIndex == 3)
-            {
+            StartCoroutine(Transit(SceneManager.GetActiveScene().buildIndex + 1));
+        }
+    }
 
-            }
-            SceneManager.LoadScene("Menu");
-        }
+    IEnumerator Transit(int levelIndex)
+    {
+        int x = levelIndex;
+        Debug.Log("Donezo");
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(x);
     }
 }

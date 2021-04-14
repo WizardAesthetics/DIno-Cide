@@ -108,6 +108,7 @@ public class Weapon : MonoBehaviour
                 p.rigid.velocity = p.transform.rotation * vel;
                 break;
         }
+        this.GetComponent<AudioSource>().Play();
     }
     public ProjectileHero MakeProjectile()
     { 
