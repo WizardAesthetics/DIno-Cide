@@ -70,7 +70,11 @@ public class PauseMenu : MonoBehaviour
         }
         else
         {
+<<<<<<< HEAD
             StartCoroutine(Transit(SceneManager.GetActiveScene().buildIndex + 1));
+=======
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+>>>>>>> 3a7bf5586ad9d069937d63fbffc0de2987bc8406
         }
     }
 
