@@ -41,6 +41,13 @@ public class Enemy_3 : Enemy_0
         birthTime = Time.time;
 
         health = 1;
+
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            float calculate = (totalScore / 380);
+            health = calculate;
+
+        }
     }
     public override void Move()
     {

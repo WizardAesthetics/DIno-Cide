@@ -35,7 +35,8 @@ public class Enemy_1 : Enemy_0
         }
         else if (SceneManager.GetActiveScene().buildIndex == 4)
         {
-            health = 10;
+            float calculate = (totalScore / 380);
+            health = calculate;
         }
     }
 

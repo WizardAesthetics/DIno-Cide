@@ -9,20 +9,27 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Level_1");
     }
-
+    public void loadMainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
     public void LoadInstuctions()
     {
         SceneManager.LoadScene("Instructions");
     }
+    public void loadSettingsMenu()
+    {
+        SceneManager.LoadScene("Settings");
+    }
 
     public void exitGame()
     {
-        Debug.Log("exit game");
+        Debug.Log("Exiting Game");
         Application.Quit();
     }
     public void LoadLevelEndless()
     {
-        Debug.Log("cLICKED eNDLESS mODE");
+        Debug.Log("Entered Endless Mode");
         SceneManager.LoadScene("Level_4");
     }
 

@@ -27,10 +27,12 @@ public class Enemy_0 : MonoBehaviour
     public static int totalScore;
     public static int goalProgress;
     public GameObject explosion;
-
+    public float calculatedrop;
+    public float calculate;
 
     void Awake()
     {
+        powerUpDropChance = 0.2f;
         bndCheck = GetComponent<BoundsCheck>();
         // Get materials and colors for this GameObject and its children
         materials = Utils.GetAllMaterials(gameObject); 
@@ -57,8 +59,12 @@ public class Enemy_0 : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().buildIndex == 4)
         {
-            health = 13;
-            powerUpDropChance = 0.15f;
+            calculate = (totalScore / 550);
+            health = calculate;
+            
+            
+            
+            
         }
     }
 
@@ -87,6 +93,27 @@ public class Enemy_0 : MonoBehaviour
         { 
             Destroy(gameObject); 
         }
+
+        if (totalScore > 100)
+        {
+            if (totalScore < 5000)
+            {
+                powerUpDropChance = 0.4f;
+            } else if (totalScore < 10000)
+            {
+                powerUpDropChance = 0.3f;
+            } else if (totalScore < 20000)
+            {
+                powerUpDropChance = 0.2f;
+            } else if (totalScore < 30000)
+            {
+                powerUpDropChance = 0.1f;
+            }
+        }
+        else {
+            powerUpDropChance = 0.4f;
+        }
+        Debug.Log("ItemDropRate: " + powerUpDropChance);
     }
 
     public virtual void Move()
@@ -94,7 +121,7 @@ public class Enemy_0 : MonoBehaviour
         Vector3 tempPos = pos;
         if (SceneManager.GetActiveScene().buildIndex == 4)
         {
-            tempPos.y -= 80f * Time.deltaTime;
+            tempPos.y -= 70f * Time.deltaTime;
         } else
         {
             tempPos.y -= speed * Time.deltaTime;
