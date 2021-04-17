@@ -64,7 +64,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Complete()
     {
-        if (SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCountInBuildSettings - 1)
+        if (SceneManager.GetActiveScene().buildIndex + 1 >= 3)
         {
             StartCoroutine(Transit(0));
         }
