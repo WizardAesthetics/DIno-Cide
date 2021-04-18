@@ -33,6 +33,8 @@ public class Weapon : MonoBehaviour
     public GameObject collar;
     public float lastShotTime; // Time last shot was fired
     private Renderer collarRend;
+    public static float lastAudioCallTime = 0;
+
     void Start()
     {
         collar = transform.Find("Collar").gameObject;
@@ -108,7 +110,11 @@ public class Weapon : MonoBehaviour
                 p.rigid.velocity = p.transform.rotation * vel;
                 break;
         }
-        this.GetComponent<AudioSource>().Play();
+        if (lastAudioCallTime + .03 < Time.time)
+        {
+            this.GetComponent<AudioSource>().Play();
+            lastAudioCallTime = Time.time;
+        }
     }
     public ProjectileHero MakeProjectile()
     { 
