@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public Animator transition;
-    public float transitionTime = 4f;
+    public float transitionTime = 1f;
 
     // Update is called once per frame
     void Update()
@@ -64,7 +64,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Complete()
     {
-        if (SceneManager.GetActiveScene().buildIndex + 1 >= 4)
+        if (SceneManager.GetActiveScene().buildIndex >= 4)
         {
             StartCoroutine(Transit(0));
         }
