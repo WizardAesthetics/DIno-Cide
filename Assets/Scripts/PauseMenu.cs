@@ -70,7 +70,7 @@ public class PauseMenu : MonoBehaviour
         }
         else
         {
-            StartCoroutine(Transit(SceneManager.GetActiveScene().buildIndex + 1));
+            StartCoroutine(Transit(SceneManager.GetActiveScene().buildIndex));
         }
     }
 
@@ -81,6 +81,6 @@ public class PauseMenu : MonoBehaviour
         transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(x);
+        SceneManager.LoadScene("Cutscene_"+x);
     }
 }
