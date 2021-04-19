@@ -40,4 +40,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Level_3");
     }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 }
