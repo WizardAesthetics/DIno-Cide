@@ -1476,7 +1476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1798629438}
   transition: {fileID: 75156124}
-  transitionTime: 4
+  transitionTime: 0.5
 --- !u!114 &1254742365
 MonoBehaviour:
   m_ObjectHideFlags: 0
