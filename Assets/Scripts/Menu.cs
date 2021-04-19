@@ -32,5 +32,12 @@ public class Menu : MonoBehaviour
         Debug.Log("Entered Endless Mode");
         SceneManager.LoadScene("Level_4");
     }
-
+    public void LoadLevel2()
+    {
+        SceneManager.LoadScene("Level_2");
+    }
+    public void LoadLevel3()
+    {
+        SceneManager.LoadScene("Level_3");
+    }
 }
