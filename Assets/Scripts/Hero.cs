@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
+    public static Text scoreGT;
+    
     static public Hero S;
     [Header("Set in Inspector")]
     // These fields control the movement of the ship
@@ -28,6 +30,7 @@ public class Hero : MonoBehaviour
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
     public int goal;
+    
 
 
     void Start()
@@ -50,14 +53,16 @@ public class Hero : MonoBehaviour
             goal = 35;
         } else if (SceneManager.GetActiveScene().buildIndex == 4)
         {
-            goal = 10000;
+            goal = 1000000;
+
         }
 
     }
     void Update()
     {
-        // Pull in information from the Input class
-        float xAxis = Input.GetAxis("Horizontal");
+
+            // Pull in information from the Input class
+            float xAxis = Input.GetAxis("Horizontal");
         float yAxis = Input.GetAxis("Vertical");
         Vector3 pos = transform.position;
         pos.x += xAxis * speed * Time.deltaTime;
@@ -74,7 +79,12 @@ public class Hero : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 4)
         {
+
+            
             score.text = "Score : " + Enemy_0.totalScore;
+
+            
+            
         } else
         {
             score.text = "Score : " + Enemy_0.totalScore + "\\" + (goal*100);
@@ -163,7 +173,11 @@ public class Hero : MonoBehaviour
                 var cloneExplosion=Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
                 Destroy(cloneExplosion, 2f);
                 // Tell Main.S to restart the game after a delay
+
                 Main.S.DelayedRestart(gameRestartDelay);
+                
+
+
             }
         }
     }

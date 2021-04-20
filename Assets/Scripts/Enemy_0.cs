@@ -160,7 +160,17 @@ public class Enemy_0 : MonoBehaviour
                     Destroy(this.gameObject);
                     totalScore += score;
                     goalProgress++;
-                
+
+                    if (SceneManager.GetActiveScene().buildIndex == 4)
+                    {
+                        int temp = Enemy_0.totalScore;
+                        if (temp > HighScore.score)
+                        {
+                            HighScore.score = temp;
+                        }
+
+                    }
+
                 }
                 Destroy(otherGO);
                 break;
